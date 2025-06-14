@@ -1,18 +1,157 @@
-<script>
-  const inputBuscar = document.getElementById('inputBuscar');
-  const lista = document.getElementById('lista-curiosidades');
-  const items = lista.getElementsByTagName('li');
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Curiosidades Random</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
 
-  inputBuscar.addEventListener('keyup', function() {
-    const filtro = inputBuscar.value.toLowerCase();
-
-    for (let i = 0; i < items.length; i++) {
-      let texto = items[i].textContent.toLowerCase();
-      if (texto.includes(filtro)) {
-        items[i].style.display = '';
-      } else {
-        items[i].style.display = 'none';
-      }
+    /* Reset básico */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Comic Neue', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-  });
-</script>
+
+    body {
+      background: #f9a825 url('https://www.transparenttextures.com/patterns/asfalt-light.png') repeat;
+      color: #222;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #fff;
+      text-shadow: 1px 1px 4px #6d4c41;
+      animation: tituloAnim 2s ease-in-out infinite alternate;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      font-style: italic;
+    }
+
+    @keyframes tituloAnim {
+      0% { text-shadow: 2px 2px 5px #6d4c41; }
+      100% { text-shadow: 2px 2px 15px #f57f17; }
+    }
+
+    #buscador {
+      max-width: 500px;
+      margin: 0 auto 30px auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    #buscador input {
+      width: 100%;
+      padding: 12px 15px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 30px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      outline: none;
+      transition: box-shadow 0.3s ease;
+    }
+
+    #buscador input:focus {
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+
+    ul#lista-curiosidades {
+      list-style: none;
+      max-width: 700px;
+      margin: 0 auto;
+      padding-left: 0;
+    }
+
+    ul#lista-curiosidades li {
+      background: #fff9c4;
+      margin-bottom: 15px;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 10px rgba(245, 127, 23, 0.3);
+      font-size: 1.2rem;
+      cursor: default;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    ul#lista-curiosidades li:hover {
+      background: #fff176;
+      transform: translateX(10px);
+    }
+
+    ul#lista-curiosidades li span.emoji {
+      font-size: 2rem;
+      user-select: none;
+    }
+
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      color: #fff;
+      font-size: 0.9rem;
+      text-shadow: 1px 1px 4px #6d4c41;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Curiosidades Random 🤩</h1>
+    <p>¡Descubrí datos que te van a sorprender!</p>
+  </header>
+
+  <section id="buscador">
+    <input type="text" id="inputBuscar" placeholder="Buscar curiosidad..." />
+  </section>
+
+  <ul id="lista-curiosidades">
+    <li><span class="emoji">🐝</span> ¿Sabías que las abejas tienen cinco ojos?</li>
+    <li><span class="emoji">🐋</span> El corazón de una ballena azul es tan grande que un humano podría nadar por sus arterias.</li>
+    <li><span class="emoji">🪼</span> Las medusas no tienen cerebro ni corazón.</li>
+    <li><span class="emoji">😴</span> El récord mundial de dormir sin parar es de 11 días.</li>
+    <li><span class="emoji">🩸</span> El metal más abundante en el cuerpo humano es el hierro.</li>
+    <li><span class="emoji">🐙</span> Los pulpos tienen tres corazones y sangre azul.</li>
+    <li><span class="emoji">☀️</span> La luz tarda 8 minutos en llegar desde el Sol hasta la Tierra.</li>
+    <li><span class="emoji">🦩</span> Los flamencos son rosados por la comida que comen, rica en pigmentos llamados carotenoides.</li>
+    <li><span class="emoji">🐕</span> Los perros tienen un sentido del olfato 40 veces más desarrollado que los humanos.</li>
+    <li><span class="emoji">🦤</span> El ojo de un avestruz es más grande que su cerebro.</li>
+  </ul>
+
+  <footer>
+    &copy; 2025 Curiosidades Random
+  </footer>
+
+  <script>
+    const inputBuscar = document.getElementById('inputBuscar');
+    const lista = document.getElementById('lista-curiosidades');
+    const items = lista.getElementsByTagName('li');
+
+    inputBuscar.addEventListener('keyup', function() {
+      const filtro = inputBuscar.value.toLowerCase();
+
+      for (let i = 0; i < items.length; i++) {
+        let texto = items[i].textContent.toLowerCase();
+        if (texto.includes(filtro)) {
+          items[i].style.display = '';
+        } else {
+          items[i].style.display = 'none';
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
